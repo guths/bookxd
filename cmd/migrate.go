@@ -38,16 +38,16 @@ var migrateUpCmd = &cobra.Command{
 	Use:   "up",
 	Short: "run up migrations",
 	Run: func(cmd *cobra.Command, args []string) {
-		step, err := cmd.Flags().GetInt("steps")
+		step, err := cmd.Flags().GetInt("step")
 
 		if err != nil {
 			fmt.Println("Unable to read flag `step`")
 			return
 		}
 
-		db := db.GetDB()
+		db.NewPostgresStore()
 
-		migrator, err := migrations.Init(db)
+		migrator, err := migrations.Init(db.GetDB())
 
 		if err != nil {
 			fmt.Println("Unable to fetch migrator")

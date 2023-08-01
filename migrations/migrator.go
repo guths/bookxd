@@ -30,10 +30,9 @@ var migrator = &Migrator{
 
 func (m *Migrator) AddMigrations(mg *Migration) {
 	m.Migrations[mg.Version] = mg
-
 	index := 0
 
-	for index < len(m.Migrations) {
+	for index < len(m.Versions) {
 		if m.Versions[index] > mg.Version {
 			break
 		}

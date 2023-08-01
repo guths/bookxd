@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/guths/bookxd/cmd"
-	"github.com/guths/bookxd/db"
+	"github.com/guths/bookxd/pkg/env"
 )
 
 func main() {
-	db.NewPostgresStore()
+	env.SetEnvs()
 
-	cmd.Execute()
+	// db.NewPostgresStore()
+	// cmd.Execute()
 }
